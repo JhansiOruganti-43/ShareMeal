@@ -2,7 +2,7 @@
 
 > Reducing food waste by connecting restaurants with NGOs.
 
-## 📖 About
+## 📖 About the Share meal 
 
 ShareMeal is a full-stack web application that helps restaurants donate surplus food to NGOs instead of wasting it. The platform includes role-based access for Restaurants, NGOs, and Admins, enabling secure food donation, approval, tracking, and analytics.
 
