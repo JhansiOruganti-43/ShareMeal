@@ -46,12 +46,10 @@ Frontend
 - React
 - Vite
 - CSS
-
 Backend
 - Flask
 - Flask SQLAlchemy
 - JWT Authentication
-
 Database
 - SQLite
 
