@@ -14,3 +14,9 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the Oxlint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+
+# ShareMeal Frontend
+
+This is the frontend application for the ShareMeal platform, built with React and Vite. It provides separate dashboards for Restaurants, NGOs, and Admins to manage surplus food donations efficiently.
+
+> The remaining sections below are part of the default Vite template and will be updated as the project evolves.

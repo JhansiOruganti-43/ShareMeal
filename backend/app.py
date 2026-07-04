@@ -68,8 +68,9 @@ def create_app():
             unique_filename = f"{int(time.time())}_{filename}"
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], unique_filename))
             
-            # Return server relative URL path
-            image_url = f"http://localhost:5000/api/uploads/{unique_filename}"
+            # Return server relative URL path using request host
+            base_url = request.host_url.rstrip('/')
+            image_url = f"{base_url}/api/uploads/{unique_filename}"
             return jsonify({'message': 'File uploaded successfully', 'url': image_url}), 200
             
     # Serve uploaded files
