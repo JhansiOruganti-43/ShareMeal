@@ -4,7 +4,11 @@
 
 ---
 
+<<<<<<< HEAD
 # 📖 About
+=======
+## ✨ All Features
+>>>>>>> 22cfa53 (docs: improve project README)
 
 ShareMeal is a web-based platform that enables restaurants to donate surplus food to NGOs instead of wasting it. The application provides secure role-based access for Restaurants, NGOs, and Admins to manage food donations, approvals, notifications, and analytics efficiently.
 
