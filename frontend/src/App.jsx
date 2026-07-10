@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import ForgotPassword from './pages/ForgotPassword';
 import RestaurantDashboard from './pages/RestaurantDashboard';
 import NgoDashboard from './pages/NgoDashboard';
 import AdminDashboard from './pages/AdminDashboard';
@@ -54,6 +55,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/forgot-password" element={<ForgotPassword />} />
 
               {/* Role Protected Dashboards */}
               <Route 

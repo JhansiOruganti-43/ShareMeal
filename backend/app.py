@@ -5,7 +5,7 @@ from flask_jwt_extended import JWTManager, jwt_required, get_jwt_identity
 from werkzeug.utils import secure_filename
 
 from config import Config
-from models import db, Notification
+from models import db, Notification, User
 
 def create_app():
     app = Flask(__name__)
@@ -86,6 +86,27 @@ def create_app():
     # Database auto-creation inside application context
     with app.app_context():
         db.create_all()
+        
+        # Seed default admin if user doesn't exist
+        from werkzeug.security import generate_password_hash
+        
+        admin_email = app.config['ADMIN_EMAIL']
+        admin_pass = app.config['ADMIN_PASSWORD']
+        existing_admin = User.query.filter_by(email=admin_email).first()
+        
+        if not existing_admin:
+            new_admin = User(
+                email=admin_email,
+                role='admin',
+                name='Administrator',
+                phone='0000000000',
+                address='System Admin',
+                status='verified'
+            )
+            new_admin.set_password(admin_pass)
+            db.session.add(new_admin)
+            db.session.commit()
+            print(f"Admin account created for {admin_email}")
         
     return app
 

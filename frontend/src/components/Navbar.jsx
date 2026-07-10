@@ -150,7 +150,6 @@ const Navbar = () => {
           ) : (
             <div style={{ display: 'flex', gap: 10 }}>
               <Link to="/login" className="btn btn-outline btn-sm">Login</Link>
-              <Link to="/register" className="btn btn-primary btn-sm">Register</Link>
             </div>
           )}
         </div>

@@ -133,6 +133,39 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const sendOtp = async (email) => {
+    const res = await fetch(`${API_URL}/auth/forgot-password`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.message || 'Failed to send OTP');
+    return data;
+  };
+
+  const verifyOtp = async (email, otp) => {
+    const res = await fetch(`${API_URL}/auth/verify-otp`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, otp })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.message || 'Invalid OTP');
+    return data;
+  };
+
+  const resetPassword = async (email, otp, newPassword) => {
+    const res = await fetch(`${API_URL}/auth/reset-password`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, otp, new_password: newPassword })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.message || 'Failed to reset password');
+    return data;
+  };
+
   const logout = () => {
     localStorage.removeItem('sharemeal_token');
     setToken(null);
@@ -157,7 +190,10 @@ export const AuthProvider = ({ children }) => {
       updateProfile,
       toggleTheme,
       fetchNotifications,
-      markNotificationRead
+      markNotificationRead,
+      sendOtp,
+      verifyOtp,
+      resetPassword
     }}>
       {children}
     </AuthContext.Provider>

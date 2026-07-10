@@ -8,9 +8,10 @@ const Register = () => {
   const navigate = useNavigate();
 
   // General fields
-  const [role, setRole] = useState('restaurant'); // 'restaurant', 'ngo', 'admin'
+  const [role, setRole] = useState('restaurant'); // 'restaurant', 'ngo'
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
@@ -48,6 +49,12 @@ const Register = () => {
     e.preventDefault();
     setError('');
     setSuccess('');
+    
+    if (password !== confirmPassword) {
+      setError("Password and Confirm Password do not match.");
+      return;
+    }
+    
     setLoading(true);
 
     const payload = {
@@ -143,7 +150,7 @@ const Register = () => {
         {/* Role Tabs Selector */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr 1fr',
+          gridTemplateColumns: '1fr 1fr',
           backgroundColor: 'var(--bg-tertiary)',
           borderRadius: 'var(--radius-md)',
           padding: 4
@@ -192,28 +199,6 @@ const Register = () => {
             <Heart size={15} />
             NGO
           </button>
-          <button 
-            type="button"
-            onClick={() => { setRole('admin'); setError(''); }}
-            style={{
-              padding: '10px 0',
-              borderRadius: 'var(--radius-sm)',
-              border: 'none',
-              cursor: 'pointer',
-              fontWeight: 600,
-              fontSize: 13.5,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: 6,
-              backgroundColor: role === 'admin' ? 'var(--bg-secondary)' : 'transparent',
-              color: role === 'admin' ? 'var(--primary)' : 'var(--text-secondary)',
-              transition: 'all var(--transition-fast)'
-            }}
-          >
-            <Shield size={15} />
-            Admin
-          </button>
         </div>
 
         {/* Registration Form */}
@@ -250,6 +235,18 @@ const Register = () => {
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">Confirm Password</label>
+            <input 
+              type="password" 
+              className="form-control" 
+              placeholder="••••••••"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
           </div>

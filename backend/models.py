@@ -202,3 +202,15 @@ class Notification(db.Model):
             'is_read': self.is_read,
             'created_at': self.created_at.isoformat()
         }
+
+class PasswordResetOTP(db.Model):
+    __tablename__ = 'password_reset_otps'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), nullable=False)
+    otp = db.Column(db.String(10), nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    expires_at = db.Column(db.DateTime, nullable=False)
+    
+    def is_valid(self):
+        return datetime.utcnow() <= self.expires_at
