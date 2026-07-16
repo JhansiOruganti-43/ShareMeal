@@ -4,6 +4,7 @@ const Donation = require("../models/Donation");
 const addDonation = async (req, res) => {
   try {
     const donation = await Donation.create({
+      restaurant: req.user.id,
       ...req.body,
       image: req.file ? req.file.filename : null,
     });

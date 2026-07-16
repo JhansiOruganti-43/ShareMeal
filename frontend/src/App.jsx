@@ -5,6 +5,9 @@ import Register from "./pages/Register";
 import RestaurantDashboard from "./pages/RestaurantDashboard";
 import NgoDashboard from "./pages/NgoDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
+import AddDonation from "./pages/AddDonation";
+import MyDonations from "./pages/MyDonations";
+import EditDonation from "./pages/EditDonation";
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
         />
         <Route path="/ngo-dashboard" element={<NgoDashboard />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/add-donation" element={<AddDonation />} />
+        <Route path="/my-donations" element={<MyDonations />}/>
+        <Route path="/edit-donation/:id" element={<EditDonation />}/>
       </Routes>
     </BrowserRouter>
   );

@@ -11,8 +11,9 @@ function Sidebar() {
     <div
       className="bg-dark text-white p-3"
       style={{
-        minHeight: "100vh",
-      }}
+  minHeight: "calc(100vh - 56px)",
+  width: "100%",
+}}
     >
       <h5 className="text-center mb-4">Restaurant</h5>
 
