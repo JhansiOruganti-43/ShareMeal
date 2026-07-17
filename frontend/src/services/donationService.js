@@ -105,3 +105,14 @@ export const getNGODashboard = async () => {
 
   return response.data;
 };
+export const getAvailableDonations = async () => {
+  const token = localStorage.getItem("token");
+
+  const response = await axios.get("/donations/available", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return response.data;
+};

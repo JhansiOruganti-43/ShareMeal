@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getNGODashboard } from "../services/donationService";
+import DashboardLayout from "../layouts/DashboardLayout";
 
 function NGODashboard() {
   const [stats, setStats] = useState({
@@ -22,6 +23,7 @@ function NGODashboard() {
   };
 
   return (
+  <DashboardLayout role="ngo">
     <div className="container mt-4">
       <h2 className="text-center mb-4">NGO Dashboard</h2>
 
@@ -48,7 +50,8 @@ function NGODashboard() {
         </div>
       </div>
     </div>
-  );
+  </DashboardLayout>
+);
 }
 
 export default NGODashboard;

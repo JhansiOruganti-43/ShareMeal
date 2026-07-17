@@ -2,9 +2,13 @@ import { useState } from "react";
 import { Container, Row, Col, Offcanvas } from "react-bootstrap";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
+import NGOSidebar from "./NGOSidebar";
 
-function DashboardLayout({ children }) {
+function DashboardLayout({ children, role = "restaurant" }) {
   const [showSidebar, setShowSidebar] = useState(false);
+
+  const SidebarComponent =
+    role === "ngo" ? NGOSidebar : Sidebar;
 
   return (
     <>
@@ -12,12 +16,13 @@ function DashboardLayout({ children }) {
 
       <Container fluid className="p-0">
         <Row className="g-0">
-          {/* Desktop Sidebar */}
-          <Col md={2} className="d-none d-md-block p-0">
-            <Sidebar />
+
+          {/* Desktop Sidebar (Desktop only) */}
+          <Col lg={2} className="d-none d-lg-block p-0">
+            <SidebarComponent />
           </Col>
 
-          {/* Mobile Sidebar */}
+          {/* Mobile & Tablet Sidebar */}
           <Offcanvas
             show={showSidebar}
             onHide={() => setShowSidebar(false)}
@@ -27,14 +32,15 @@ function DashboardLayout({ children }) {
             </Offcanvas.Header>
 
             <Offcanvas.Body className="p-0">
-              <Sidebar />
+              <SidebarComponent />
             </Offcanvas.Body>
           </Offcanvas>
 
           {/* Main Content */}
-          <Col xs={12} md={10} lg={10} className="p-4">
+          <Col xs={12} lg={10} className="p-4">
             {children}
           </Col>
+
         </Row>
       </Container>
     </>

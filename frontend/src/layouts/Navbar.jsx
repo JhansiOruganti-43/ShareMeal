@@ -14,19 +14,21 @@ function CustomNavbar({ toggleSidebar }) {
     <Navbar bg="success" variant="dark" expand="lg" className="px-3">
       <Container fluid>
 
+        {/* Mobile & Tablet Menu Button */}
         <Button
           variant="success"
-          className="d-md-none me-2"
+          className="d-lg-none me-2"
           onClick={toggleSidebar}
         >
-           <FaBars size={24} />
+          <FaBars size={24} />
         </Button>
 
         <Navbar.Brand>🍽 ShareMeal</Navbar.Brand>
 
         <div className="ms-auto d-flex align-items-center">
 
-          <span className="text-white me-3 d-none d-md-block">
+          {/* Desktop Welcome */}
+          <span className="text-white me-3 d-none d-lg-block">
             Welcome, {user?.name}
           </span>
 
