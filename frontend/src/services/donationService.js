@@ -94,3 +94,14 @@ export const getRestaurantDashboard = async () => {
 
   return response.data;
 };
+export const getNGODashboard = async () => {
+  const token = localStorage.getItem("token");
+
+  const response = await axios.get("/donations/ngo-dashboard", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return response.data;
+};

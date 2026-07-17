@@ -8,6 +8,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import AddDonation from "./pages/AddDonation";
 import MyDonations from "./pages/MyDonations";
 import EditDonation from "./pages/EditDonation";
+import NGODashboard from "./pages/NGODashboard";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           path="/restaurant-dashboard"
           element={<RestaurantDashboard />}
         />
+        <Route path="/ngo-dashboard" element={<NGODashboard />} />
         <Route path="/ngo-dashboard" element={<NgoDashboard />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/add-donation" element={<AddDonation />} />

@@ -11,7 +11,10 @@ const { deleteDonation } = require("../controllers/deleteDonationController");
 const { searchDonations } = require("../controllers/searchController");
 const { getMyDonations } = require("../controllers/getMyDonationsController");
 const { getDonationById } = require("../controllers/getDonationByIdController");
-const { restaurantDashboard,} = require("../controllers/restaurantDashboardController");
+const { ngoDashboard } = require("../controllers/ngoDashboardController");
+const {
+  restaurantDashboard,
+} = require("../controllers/restaurantDashboardController");
 
 // =====================
 // Add Donation
@@ -31,7 +34,6 @@ router.get("/search", searchDonations);
 
 // =====================
 // Get My Donations
-// IMPORTANT: Keep this ABOVE "/:id"
 // =====================
 router.get(
   "/my",
@@ -41,7 +43,28 @@ router.get(
 );
 
 // =====================
-// Get Single Donation by ID
+// Restaurant Dashboard
+// IMPORTANT: Keep this ABOVE "/:id"
+// =====================
+router.get(
+  "/dashboard",
+  authMiddleware,
+  roleMiddleware("restaurant"),
+  restaurantDashboard
+);
+
+// =====================
+// NGO Dashboard
+// =====================
+router.get(
+  "/ngo-dashboard",
+  authMiddleware,
+  roleMiddleware("ngo"),
+  ngoDashboard
+);
+// =====================
+// Get Single Donation By ID
+// IMPORTANT: Keep this BELOW "/dashboard"
 // =====================
 router.get(
   "/:id",
@@ -68,13 +91,6 @@ router.delete(
   authMiddleware,
   roleMiddleware("restaurant"),
   deleteDonation
-);
-
-router.get(
-  "/dashboard",
-  authMiddleware,
-  roleMiddleware("restaurant"),
-  restaurantDashboard
 );
 
 module.exports = router;
