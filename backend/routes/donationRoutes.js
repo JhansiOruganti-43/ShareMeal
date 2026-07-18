@@ -14,6 +14,7 @@ const { getDonationById } = require("../controllers/getDonationByIdController");
 const { ngoDashboard } = require("../controllers/ngoDashboardController");
 const { getAvailableDonations,} = require("../controllers/getAvailableDonationsController");
 const { restaurantDashboard, } = require("../controllers/restaurantDashboardController");
+const { claimDonation } = require("../controllers/claimDonationController");
 
 // =====================
 // Add Donation
@@ -69,6 +70,16 @@ router.get(
   authMiddleware,
   roleMiddleware("ngo"),
   getAvailableDonations
+);
+
+// =====================
+// Claim Donation (NGO)
+// =====================
+router.put(
+  "/claim/:id",
+  authMiddleware,
+  roleMiddleware("ngo"),
+  claimDonation
 );
 // =====================
 // Get Single Donation By ID

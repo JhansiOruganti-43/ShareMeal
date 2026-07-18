@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAvailableDonations } from "../services/donationService";
+import { getAvailableDonations, claimDonation, } from "../services/donationService";
 import DashboardLayout from "../layouts/DashboardLayout";
 
 function AvailableDonations() {
@@ -17,6 +17,17 @@ function AvailableDonations() {
       console.log(error);
     }
   };
+  const handleClaim = async (id) => {
+  try {
+    await claimDonation(id);
+
+    alert("Donation claimed successfully!");
+
+    fetchDonations();
+  } catch (error) {
+    alert(error.response?.data?.message || "Something went wrong");
+  }
+};
 
   return (
   <DashboardLayout role="ngo">
@@ -34,9 +45,7 @@ function AvailableDonations() {
                 <p><strong>Address:</strong> {donation.pickupAddress}</p>
                 <p><strong>Status:</strong> {donation.status}</p>
 
-                <button className="btn btn-success w-100">
-                  Claim
-                </button>
+                <button className="btn btn-success w-100" onClick={() => handleClaim(donation._id)}>Claim </button>
               </div>
             </div>
           </div>

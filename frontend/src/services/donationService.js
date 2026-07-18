@@ -116,3 +116,18 @@ export const getAvailableDonations = async () => {
 
   return response.data;
 };
+export const claimDonation = async (id) => {
+  const token = localStorage.getItem("token");
+
+  const response = await axios.put(
+    `/donations/claim/${id}`,
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  return response.data;
+};
