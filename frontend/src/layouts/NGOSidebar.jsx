@@ -43,6 +43,10 @@ function NGOSidebar() {
             My Claimed Donations
           </Link>
         </li>
+        <li className="nav-item mb-2"> <Link to="/completed-donations" className="nav-link text-white" >
+    Completed Donations
+  </Link>
+</li>
 
         <li className="nav-item mt-4">
           <button

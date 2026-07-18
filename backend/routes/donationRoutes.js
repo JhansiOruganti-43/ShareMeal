@@ -15,6 +15,10 @@ const { ngoDashboard } = require("../controllers/ngoDashboardController");
 const { getAvailableDonations,} = require("../controllers/getAvailableDonationsController");
 const { restaurantDashboard, } = require("../controllers/restaurantDashboardController");
 const { claimDonation } = require("../controllers/claimDonationController");
+const { getMyClaimedDonations, } = require("../controllers/myClaimedDonationsController");
+const { completeDonation, } = require("../controllers/completeDonationController");
+const { getCompletedDonations, } = require("../controllers/completedDonationsController");
+const { getRestaurantCompletedDonations, } = require("../controllers/restaurantCompletedDonationsController");
 
 // =====================
 // Add Donation
@@ -81,6 +85,33 @@ router.put(
   roleMiddleware("ngo"),
   claimDonation
 );
+
+router.get(
+  "/my-claimed",
+  authMiddleware,
+  roleMiddleware("ngo"),
+  getMyClaimedDonations
+);
+
+router.put(
+  "/complete/:id",
+  authMiddleware,
+  roleMiddleware("ngo"),
+  completeDonation
+);
+router.get(
+  "/completed",
+  authMiddleware,
+  roleMiddleware("ngo"),
+  getCompletedDonations
+);
+router.get(
+  "/restaurant-completed",
+  authMiddleware,
+  roleMiddleware("restaurant"),
+  getRestaurantCompletedDonations
+);
+
 // =====================
 // Get Single Donation By ID
 // IMPORTANT: Keep this BELOW "/dashboard"

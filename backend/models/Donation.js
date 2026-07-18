@@ -7,6 +7,11 @@ const donationSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
+    claimedBy: {
+  type: mongoose.Schema.Types.ObjectId,
+  ref: "User",
+  default: null,
+},
 
     foodName: {
       type: String,

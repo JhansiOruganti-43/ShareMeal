@@ -131,3 +131,54 @@ export const claimDonation = async (id) => {
 
   return response.data;
 };
+export const getMyClaimedDonations = async () => {
+  const token = localStorage.getItem("token");
+
+  const response = await axios.get("/donations/my-claimed", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return response.data;
+};
+export const completeDonation = async (id) => {
+  const token = localStorage.getItem("token");
+
+  const response = await axios.put(
+    `/donations/complete/${id}`,
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  return response.data;
+};
+export const getCompletedDonations = async () => {
+  const token = localStorage.getItem("token");
+
+  const response = await axios.get("/donations/completed", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return response.data;
+};
+export const getRestaurantCompletedDonations = async () => {
+  const token = localStorage.getItem("token");
+
+  const response = await axios.get(
+    "/donations/restaurant-completed",
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  return response.data;
+};

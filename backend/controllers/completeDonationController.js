@@ -1,6 +1,6 @@
 const Donation = require("../models/Donation");
 
-const claimDonation = async (req, res) => {
+const completeDonation = async (req, res) => {
   try {
     const donation = await Donation.findById(req.params.id);
 
@@ -11,21 +11,19 @@ const claimDonation = async (req, res) => {
       });
     }
 
-    if (donation.status !== "Available") {
+    if (donation.status !== "Claimed") {
       return res.status(400).json({
         success: false,
-        message: "Donation already claimed",
+        message: "Only claimed donations can be completed",
       });
     }
-    donation.status = "Claimed";
-donation.claimedBy = req.user.id;
-    donation.claimedBy = req.user.id;
 
+    donation.status = "Completed";
     await donation.save();
 
     res.status(200).json({
       success: true,
-      message: "Donation claimed successfully",
+      message: "Donation marked as completed",
     });
   } catch (error) {
     res.status(500).json({
@@ -35,4 +33,4 @@ donation.claimedBy = req.user.id;
   }
 };
 
-module.exports = { claimDonation };
+module.exports = { completeDonation };

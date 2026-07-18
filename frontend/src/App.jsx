@@ -9,6 +9,11 @@ import MyDonations from "./pages/MyDonations";
 import EditDonation from "./pages/EditDonation";
 import NGODashboard from "./pages/NGODashboard";
 import AvailableDonations from "./pages/AvailableDonations";
+import MyClaimedDonations from "./pages/MyClaimedDonations";
+import CompletedDonations from "./pages/CompletedDonations";
+import RestaurantCompletedDonations from "./pages/RestaurantCompletedDonations";
+
+
 
 function App() {
   return (
@@ -26,6 +31,9 @@ function App() {
         <Route path="/add-donation" element={<AddDonation />} />
         <Route path="/my-donations" element={<MyDonations />}/>
         <Route path="/edit-donation/:id" element={<EditDonation />}/>
+        <Route path="/my-claimed-donations" element={<MyClaimedDonations />} />
+        <Route path="/completed-donations" element={<CompletedDonations />} />
+        <Route path="/restaurant-completed-donations" element={<RestaurantCompletedDonations />}/>
       </Routes>
     </BrowserRouter>
   );
