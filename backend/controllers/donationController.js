@@ -6,7 +6,6 @@ const addDonation = async (req, res) => {
     const donation = await Donation.create({
       restaurant: req.user.id,
       ...req.body,
-      image: req.file ? req.file.filename : null,
     });
 
     res.status(201).json({
@@ -15,6 +14,8 @@ const addDonation = async (req, res) => {
       donation,
     });
   } catch (error) {
+    console.error(error);
+
     res.status(500).json({
       success: false,
       message: error.message,

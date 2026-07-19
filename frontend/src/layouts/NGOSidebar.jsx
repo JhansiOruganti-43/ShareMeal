@@ -47,6 +47,14 @@ function NGOSidebar() {
     Completed Donations
   </Link>
 </li>
+<li className="nav-item mb-2">
+  <Link
+    to="/search"
+    className="nav-link text-white"
+  >
+    Search Donations
+  </Link>
+</li>
 
         <li className="nav-item mt-4">
           <button

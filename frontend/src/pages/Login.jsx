@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Container, Form, Button, Card } from "react-bootstrap";
 import { loginUser } from "../services/authService";
+import { toast } from "react-toastify";
 
 function Login() {
   const navigate = useNavigate();
@@ -24,8 +25,7 @@ function Login() {
     try {
       const res = await loginUser(formData);
 
-      alert("Login Successful!");
-
+toast.success("Login Successful!");
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
 
@@ -39,10 +39,10 @@ function Login() {
         navigate("/admin-dashboard");
       }
     } catch (err) {
-      alert(err.response?.data?.message || "Login Failed");
+      toast.error(err.response?.data?.message || "Login Failed");
     }
   };
-
+  
   return (
     <Container
       className="d-flex justify-content-center align-items-center"

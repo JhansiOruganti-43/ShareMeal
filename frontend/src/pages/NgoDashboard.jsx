@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import { getNGODashboard } from "../services/donationService";
 import DashboardLayout from "../layouts/DashboardLayout";
+import { useNavigate } from "react-router-dom";
 
 function NGODashboard() {
+  const navigate = useNavigate();
+
   const [stats, setStats] = useState({
     available: 0,
     claimed: 0,
@@ -29,24 +32,33 @@ function NGODashboard() {
 
       <div className="row g-4">
         <div className="col-md-4">
-          <div className="card shadow text-center p-4">
-            <h4>Available Donations</h4>
-            <h2>{stats.available}</h2>
-          </div>
+          <div className="card shadow text-center p-4" style={{ cursor: "pointer" }}
+      onClick={() => navigate("/available-donations")}>
+      <h4>Available Donations</h4>
+      <h2>{stats.available}</h2>
+       </div>
         </div>
 
         <div className="col-md-4">
-          <div className="card shadow text-center p-4">
-            <h4>Claimed Donations</h4>
-            <h2>{stats.claimed}</h2>
-          </div>
+          <div
+  className="card shadow text-center p-4"
+  style={{ cursor: "pointer" }}
+  onClick={() => navigate("/my-claimed-donations")}
+>
+  <h4>Claimed Donations</h4>
+  <h2>{stats.claimed}</h2>
+</div>
         </div>
 
         <div className="col-md-4">
-          <div className="card shadow text-center p-4">
-            <h4>Completed Donations</h4>
-            <h2>{stats.completed}</h2>
-          </div>
+          <div
+  className="card shadow text-center p-4"
+  style={{ cursor: "pointer" }}
+  onClick={() => navigate("/completed-donations")}
+>
+  <h4>Completed Donations</h4>
+  <h2>{stats.completed}</h2>
+</div>
         </div>
       </div>
     </div>

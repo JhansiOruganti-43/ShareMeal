@@ -3,7 +3,6 @@ const router = express.Router();
 
 const authMiddleware = require("../middleware/authMiddleware");
 const roleMiddleware = require("../middleware/roleMiddleware");
-const upload = require("../middleware/uploadMiddleware");
 
 const { addDonation } = require("../controllers/donationController");
 const { updateDonation } = require("../controllers/updateDonationController");
@@ -27,7 +26,6 @@ router.post(
   "/add",
   authMiddleware,
   roleMiddleware("restaurant"),
-  upload.single("image"),
   addDonation
 );
 

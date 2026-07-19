@@ -1,23 +1,21 @@
 import axios from "../api/axios";
 
 // Create Donation
-export const createDonation = async (formData) => {
+export const createDonation = async (donationData) => {
   const token = localStorage.getItem("token");
 
   const response = await axios.post(
     "/donations/add",
-    formData,
+    donationData,
     {
       headers: {
         Authorization: `Bearer ${token}`,
-        "Content-Type": "multipart/form-data",
       },
     }
   );
 
   return response.data;
 };
-
 // Get My Donations
 export const getMyDonations = async () => {
   const token = localStorage.getItem("token");

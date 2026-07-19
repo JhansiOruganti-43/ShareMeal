@@ -3,7 +3,9 @@ import {
   FaHome,
   FaPlusCircle,
   FaBoxOpen,
+  FaCheckCircle,
   FaUser,
+  FaSearch,
 } from "react-icons/fa";
 
 function Sidebar() {
@@ -33,6 +35,17 @@ function Sidebar() {
           <FaBoxOpen className="me-2" />
           My Donations
         </Nav.Link>
+        <Nav.Link
+  href="/restaurant-completed-donations"
+  className="text-white mb-3"
+>
+  <FaCheckCircle className="me-2" />
+  Completed Donations
+</Nav.Link>
+<Nav.Link href="/search" className="text-white mb-3">
+  <FaSearch className="me-2" />
+  Search Donations
+</Nav.Link>
 
         <Nav.Link href="/profile" className="text-white">
           <FaUser className="me-2" />

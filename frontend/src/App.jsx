@@ -12,6 +12,10 @@ import AvailableDonations from "./pages/AvailableDonations";
 import MyClaimedDonations from "./pages/MyClaimedDonations";
 import CompletedDonations from "./pages/CompletedDonations";
 import RestaurantCompletedDonations from "./pages/RestaurantCompletedDonations";
+import SearchDonations from "./pages/SearchDonations";
+import Profile from "./pages/Profile";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 
@@ -34,7 +38,10 @@ function App() {
         <Route path="/my-claimed-donations" element={<MyClaimedDonations />} />
         <Route path="/completed-donations" element={<CompletedDonations />} />
         <Route path="/restaurant-completed-donations" element={<RestaurantCompletedDonations />}/>
+        <Route path="/search" element={<SearchDonations />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
+      <ToastContainer position="top-right" autoClose={3000} />
     </BrowserRouter>
   );
 }
