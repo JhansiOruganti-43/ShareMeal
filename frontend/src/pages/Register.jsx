@@ -103,7 +103,7 @@ function Register() {
               >
                 <option value="restaurant">Restaurant</option>
                 <option value="ngo">NGO</option>
-                <option value="admin">Admin</option>
+                {/* <option value="admin">Admin</option> */}
               </Form.Select>
             </Col>
           </Form.Group>
